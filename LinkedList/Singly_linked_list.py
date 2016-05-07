@@ -50,6 +50,26 @@ class linked_list:
 
         previous_node.next = None
 
+    def get_first_node(self):
+        return self.head.data
+
+    def get_last_node(self):
+        current_node = self.head
+        while current_node.next != None:
+            current_node = current_node.next
+
+        return current_node.data
+
+    def get_node_at_position(self, pos):
+        current_node = self.head
+        count = 0
+        while current_node.next != None or count < pos:
+            count = + 1
+            if pos == count:
+                return current_node.data
+            else:
+                current_node = current_node.next
+
     def print_list(self):
         node_list = []
         current_node = self.head
@@ -68,4 +88,7 @@ ll.add_node_at_beginning(4)
 ll.add_node_at_last(5)
 ll.delete_first_node()
 ll.delete_last_node()
+ll.add_at_pos(11, 2)
+print ll.get_first_node()
+print ll.get_last_node()
 ll.print_list()
