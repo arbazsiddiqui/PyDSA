@@ -37,6 +37,18 @@ class linked_list:
             current = current.next
         current.next = new_node
 
+    def add_at_position(self, data, pos):
+        new_node = Node(data)
+        current_node = self.head
+        previous_node = None
+        count = -1
+        while count != pos:
+            previous_node = current_node
+            current_node = current_node.next
+            count += 1
+        previous_node.next = new_node
+        new_node.next = current_node
+
     def delete_first_node(self):
         self.head = self.head.next
 
@@ -62,9 +74,9 @@ class linked_list:
 
     def get_node_at_position(self, pos):
         current_node = self.head
-        count = 0
+        count = -1
         while current_node.next != None or count < pos:
-            count = + 1
+            count += 1
             if pos == count:
                 return current_node.data
             else:
@@ -86,9 +98,9 @@ ll.add_node_at_beginning(3)
 ll.add_node_at_beginning(2)
 ll.add_node_at_beginning(4)
 ll.add_node_at_last(5)
-ll.delete_first_node()
-ll.delete_last_node()
-ll.add_at_pos(11, 2)
+ll.print_list()
+ll.add_at_position(11, 4)
 print ll.get_first_node()
 print ll.get_last_node()
+print ll.get_node_at_position(0)
 ll.print_list()
